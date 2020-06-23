@@ -51,7 +51,7 @@ def clean_folder_bib(folder, bib_data):
 
     paper_path = new_folder / f"{citekey}.pdf"
     if paper_path.exists():
-        bib[citekey].fields["file"] = "file://" + str(paper_path)
+        bib[citekey].fields["file"] = f"{citekey}.pdf" 
 
     abstract_path = new_folder / "abstract.txt"
     if abstract_path.exists():
