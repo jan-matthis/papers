@@ -21,7 +21,7 @@ In addition, [ImageMagick](https://imagemagick.org/script/download.php) needs to
 
 ## Usage
 
-Import papers from arXiv from an identifier, or import PDFs from URLs:
+Import papers from arXiv using an identifier, or import PDFs using URLs:
 ```commandline
 $ papers-import --path ~/Papers arxiv ID
 $ papers-import --path ~/Papers pdf URL --title ...
