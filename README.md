@@ -1,5 +1,8 @@
 # Papers
 
+Simple reference manager in Python. Uses folders instead of a database. Bibliographic information is stored in bibtex. Generates a website to browse papers.
+
+
 ## Installation
 
 ```commandline
@@ -13,21 +16,20 @@ In addition, [ImageMagick](https://imagemagick.org/script/download.php) needs to
 
 Import papers from arXiv from an identifier, or import PDFs from URLs:
 ```commandline
-$ papers-import arxiv ID
-$ papers-import pdf URL --title ...
+$ papers-import --path ~/Papers arxiv ID
+$ papers-import --path ~/Papers pdf URL --title ...
 ```
 
-See `papers-import --help` for full list of options, e.g., how to specify the path of the folder containing papers.
+See `papers-import --help` for full list of options.
 
-Papers can be exported bib-files, a single citation, or a website containing the full index:
+The bibliography can be exported to a bib-file, or a website containing the full index:
 
 ```
-$ papers-export bib
-$ papers-export cite CITEKEY
-$ papers-export web
+$ papers-export --path ~/Papers bib
+$ papers-export --path ~/Papers web
 ```
 
-See `papers-export --help` for fill list of options.
+See `papers-export --help` for full list of options.
 
 
 ## Demo
