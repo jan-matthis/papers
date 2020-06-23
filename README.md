@@ -3,6 +3,13 @@
 Simple reference manager in Python. Uses folders instead of a database. Bibliographic information is stored in bibtex. Generates a website to browse papers.
 
 
+## Demo
+
+[![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)](https://papers-demo.netlify.app)
+
+Website generated from bibliography stored in `demo/`.
+
+
 ## Installation
 
 ```commandline
@@ -22,7 +29,7 @@ $ papers-import --path ~/Papers pdf URL --title ...
 
 See `papers-import --help` for full list of options.
 
-The bibliography can be exported to a bib-file, or a website containing the full index:
+The bibliography can be exported to a single bib-file, or a website containing the full index:
 
 ```
 $ papers-export --path ~/Papers bib
@@ -30,11 +37,6 @@ $ papers-export --path ~/Papers web
 ```
 
 See `papers-export --help` for full list of options.
-
-
-## Demo
-
-[![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)](https://papers-demo.netlify.app)
 
 
 ## Credits
