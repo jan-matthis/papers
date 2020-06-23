@@ -74,7 +74,7 @@ def cli_export():
 
     parser_web = subparsers.add_parser(
         "web", 
-        description="Export references to website", 
+        description="Export references to website. Will create `index.html` and `index.bib` in `--path`.", 
         add_help=False
     )
     parser_web.add_argument(
