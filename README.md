@@ -41,7 +41,7 @@ See `papers-export --help` for full list of options.
 
 ## Credits
 
-PDF previews inspired by [Andrej Karpathy's Arxiv Sanity Preserver](http://www.arxiv-sanity.com/). Favicon by [fibo junior](https://thenounproject.com/term/literature/2273532/) under [CCBY](https://creativecommons.org/licenses/by/3.0/us/legalcode).
+Previews inspired by [Andrej Karpathy's Arxiv Sanity Preserver](http://www.arxiv-sanity.com/). 
 
 
 ## License
