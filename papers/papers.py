@@ -57,9 +57,7 @@ def export_bib(path="~/Papers", aux=None, output="index.bib", **kwargs):
             )
             continue
 
-        bib_data, citekey = clean_folder_bib(
-            i.parent, bib_data.entries.items()[0][1]
-        )
+        bib_data, citekey = clean_folder_bib(i.parent, bib_data.entries.items()[0][1])
 
         if aux is not None:
             if citekey not in matches:
@@ -101,11 +99,7 @@ def export_web(path="~/Papers", inline=False, regenerate_all_previews=False, **k
         tmpl = tenv.from_string(f.read())
 
     # Make BibTeX file
-    bibfile_path = export_bib(
-        path=path,
-        aux=None,
-        output=papers_path / "index.bib",
-    )
+    bibfile_path = export_bib(path=path, aux=None, output=papers_path / "index.bib",)
 
     # Parse the BibTeX file
     with open(bibfile_path, "r+") as f:
@@ -211,7 +205,14 @@ def import_arxiv(arxiv_id=None, tags=None, path="~/Papers", path_tmp="/tmp/", **
 
 
 def import_url_pdf(
-    url=None, author=None, year=None, title=None, journal=None, tags=None, path="~/Papers", **kwargs
+    url=None,
+    author=None,
+    year=None,
+    title=None,
+    journal=None,
+    tags=None,
+    path="~/Papers",
+    **kwargs,
 ):
     assert url is not None
     papers_path = Path(path).expanduser().absolute()
@@ -252,18 +253,18 @@ def import_url_pdf(
         journal=journal,
     )
     Path(new_folder / f"{citekey}.bib").write_text(bib_contents)
-    
+
     response = requests.get(url)
     pdf_file = Path(new_folder, citekey + ".pdf")
     with open(pdf_file, "wb") as f:
         f.write(response.content)
-    
+
     if tags != None:
         tags = tags.split(",")
         for tag in tags:
             path = Path(new_folder, "#" + tag.strip())
             if not path.exists():
                 path.touch()
-    
+
     print("Edit abstract.txt now:")
     print("vi {}".format(new_folder / "abstract.txt"))

@@ -82,7 +82,7 @@ def clean_folder_bib(folder, bib_data):
 
 
 def format_lastname_first_author(lastname_first_author):
-    return str(unidecode(lastname_first_author.replace("-","").lower()))
+    return str(unidecode(lastname_first_author.replace("-", "").lower()))
 
 
 def make_citekey(lastname_first_author, year, title):
@@ -95,8 +95,8 @@ def make_citekey(lastname_first_author, year, title):
         "an",
         "are",
         "at",
-        #"can",
-        #"do",
+        # "can",
+        # "do",
         "is",
         "how",
         "on",
@@ -109,7 +109,9 @@ def make_citekey(lastname_first_author, year, title):
         "which",
         "who",
     ]
-    for word in title.lower().replace("-", " ").replace(":", " ").replace(",", " ").split(" "):
+    for word in (
+        title.lower().replace("-", " ").replace(":", " ").replace(",", " ").split(" ")
+    ):
         if word in not_first_word:
             continue
         else:

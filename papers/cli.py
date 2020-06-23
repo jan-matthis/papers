@@ -1,4 +1,5 @@
 import argparse
+import sys
 from pathlib import Path
 
 from papers.papers import (
@@ -9,7 +10,6 @@ from papers.papers import (
     import_url_pdf,
 )
 from papers.utils.argparse import _HelpAction
-import sys
 from papers.utils.debug import pdb_hook
 
 
