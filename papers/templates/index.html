@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1,user-scalable=0">
+    <meta name="apple-mobile-web-app-title" content="Papers">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="referrer" content="never">
+    <meta name="referrer" content="no-referrer">
+    <meta name="theme-color" content="#000000">
+    <title>Papers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <style>
+    .navbar {
+        border-bottom: 1px solid #e8e8e8;
+    }
+    a.navbar-item {
+        font-weight: 400 !important;
+    }
+    .navbar-link.is-active, a.navbar-item.is-active {
+        color: #3273dc;
+    }
+    .navbar-start {
+        margin-right: -1.5rem;
+    }
+    @media screen and (max-width: 767px) {
+        .navbar-start {
+        margin-right: 0rem !important;
+        }
+    }
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+        .navbar-start {
+        margin-right: 0rem !important;
+        }
+    }
+    .placeholder {
+        width: 20px;
+    }
+    .run-selector {
+        width: 250px;
+    }
+    .toggle-button {
+        margin-right: 5px;
+    }
+    .toggle-content {
+        display: none;
+    }
+    .toggle-content.is-visible {
+        display: block;
+    }
+    </style>
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+  </head>
+  <body>
+  <section class="section">
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+      <div class="container">
+        <div class="navbar-brand" style="width:100% !important">
+            <a class="navbar-item has-text-black" href="">
+              <span style='padding-left:0.5em;'><strong>papers</strong></span>
+            </a>
+          <div class="navbar-start" style="width:100% !important">
+            <div class="navbar-item field" style="width:100% !important">
+              <p class="control has-icons-right" style="width:100% !important">
+                <input class="input is-shadowless" type="search" placeholder="Search" id="search" value='' autocomplete="false" autofocus>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-search" aria-hidden="true"></i>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <br>
+      <br>
+      <ul id="items">
+        {% for entry in entries %}
+        <li class='paper'>
+          <div class="columns is-gapless">
+            <div class="column is-half">
+              <h2 class="title is-4">{{ entry|title }}</h2>
+            </div>
+            <div class="column has-text-right has-text-left-mobile">
+              {% if 'note' in entry.fields %}
+              <a class="button toggle-button" onclick="toggle('{{ entry.fields['key'] }}-note')">notes</a>
+              {% endif %}
+              {% if 'summary' in entry.fields %}
+              <a class="button toggle-button" onclick="toggle('{{ entry.fields['key'] }}-abstract')">abstract</a>
+              {% endif %}
+              <a class="button is-light" href="./{{ entry.fields['key'] }}/{{ entry.fields['key'] }}.pdf">{{ entry.fields['key'] }}</a>
+            </div>
+          </div>
+
+          <h6 class="subtitle" style="margin-top: -22px;">{{ entry.persons['author']|author_list }}</h6>
+
+          <div class="tags" style="margin-top: -10px; margin-bottom:-7px">
+            <span class="tag is-normal is-light">{{ entry.fields['year'] }}</span>
+            {% for keyword in entry.fields['keywords']|keyword_list %}
+              {% if keyword|length %}
+                <span class="tag is-normal is-light">{{ keyword }}</span>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class='is-clipped' height='230px'>
+            <a href="./{{ entry.fields['key'] }}/{{ entry.fields['key'] }}.pdf">
+              {% if 'preview' in entry.fields %}
+              <img src="data:image/jpeg;base64,{{ entry.fields['preview'] | safe }}">
+              {% else %}
+              <div style='background-image: url({{ entry.fields['key'] }}/preview.jpg); height: 230px;' class='preview'></div>
+              {% endif %}
+            </a>
+          </div>
+
+          {% if 'summary' in entry.fields %}
+          <div id="{{ entry.fields['key'] }}-abstract" class="abstract content toggle-content">
+            <p>{{ entry.fields['summary'] }}</p>
+          </div>
+          {% endif %}
+
+          {% if 'note' in entry.fields %}
+          <div id="{{ entry.fields['key'] }}-note" class="note content toggle-content">
+            {{ entry.fields['note'] }}
+          </div>
+          {% endif %}
+
+          <br>
+          <br>
+          <br>
+        </li>
+        {% endfor %}
+
+      </ul>
+
+    </div>
+  </section>
+
+  <script>
+  document.querySelectorAll('.note').forEach(function(note) {
+    renderMathInElement(note,
+        {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "\\[", right: "\\]", display: true},
+                {left: "$", right: "$", display: false},
+                {left: "\\(", right: "\\)", display: false}
+            ]
+        }
+    );
+  });
+
+  var toggle = function(id) {
+  	document.getElementById(id).classList.toggle('is-visible');
+  };
+
+  var filter = function(filterText) {
+    var lis = document.querySelectorAll('.paper');
+    for (x = 0; x < lis.length; x++) {
+        if (filterText === '' || lis[x].innerHTML.toLowerCase().indexOf(filterText.toLowerCase()) > -1) {
+            lis[x].removeAttribute('hidden');
+        } else {
+            lis[x].setAttribute('hidden', true);
+        }
+    }
+
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+  };
+
+  filter(document.getElementById('search').value)
+
+  document.getElementById('search').addEventListener('keyup', function () {
+      filter(this.value)
+  });
+  </script>
+  </body>
+</html>
