@@ -1,3 +1,6 @@
+[![PyPI version](https://badge.fury.io/py/papers.svg)](https://badge.fury.io/py/papers)
+[![GitHub license](https://img.shields.io/github/license/jan-matthis/papers)](https://github.com/jan-matthis/papers/blob/master/LICENSE)
+
 # Papers
 
 Simple reference manager in Python. Uses folders instead of a database. Bibliographic information is stored in bibtex and generates a website to browse papers.

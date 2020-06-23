@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import Command, find_packages, setup
 
 NAME = "papers"
-DESCRIPTION = "Manages papers"
+DESCRIPTION = "Simple reference manager in Python"
 URL = "https://github.com/jan-matthis/papers"
 EMAIL = "mail@jan-matthis.de"
 AUTHOR = "Jan-Matthis Lueckmann"
