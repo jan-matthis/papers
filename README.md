@@ -3,7 +3,7 @@
 
 # Papers
 
-Simple reference manager in Python. Uses folders instead of a database. Bibliographic information is stored in bibtex and generates a website to browse papers.
+Simple reference manager in Python. Uses folders instead of a database, storing bibliographic information in bibtex. Generates a website to browse papers.
 
 
 ## Demo
