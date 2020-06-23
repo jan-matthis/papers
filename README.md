@@ -32,9 +32,7 @@ See `papers-export --help` for fill list of options.
 
 ## Demo
 
-![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)
-
-[Demo of the web UI](https://papers-demo.netlify.app)/.
+[![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)](https://papers-demo.netlify.app)
 
 
 ## Credits
