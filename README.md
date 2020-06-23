@@ -5,9 +5,9 @@ Simple reference manager in Python. Uses folders instead of a database. Bibliogr
 
 ## Demo
 
-[![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)](https://papers-demo.netlify.app)
-
 Website generated from bibliography stored in `demo/`.
+
+[![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)](https://papers-demo.netlify.app)
 
 
 ## Installation
