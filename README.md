@@ -30,6 +30,13 @@ $ papers-export web
 See `papers-export --help` for fill list of options.
 
 
+## Demo
+
+![Screenshot](https://raw.githubusercontent.com/jan-matthis/papers/master/screenshot.png)
+
+[Demo of the web UI](https://papers-demo.netlify.app)/.
+
+
 ## Credits
 
 PDF previews inspired by [Andrej Karpathy's Arxiv Sanity Preserver](http://www.arxiv-sanity.com/). Favicon by [fibo junior](https://thenounproject.com/term/literature/2273532/) under [CCBY](https://creativecommons.org/licenses/by/3.0/us/legalcode).
