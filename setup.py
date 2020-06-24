@@ -86,6 +86,7 @@ setup(
     packages=find_packages(exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
     entry_points={
         "console_scripts": [
+            "papers=papers.cli:cli_papers",
             "papers-import=papers.cli:cli_import",
             "papers-export=papers.cli:cli_export",
         ],

@@ -187,3 +187,9 @@ def cli_import():
     args.unknownargs = unknownargs
 
     args.func(**vars(args))
+
+
+def cli_papers():
+    from papers.__version__ import __version__ as version
+    print(f"papers version {version}\n")
+    print("Use papers-import for imports and papers-export for exports.")

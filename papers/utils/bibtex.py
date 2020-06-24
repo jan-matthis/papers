@@ -110,7 +110,7 @@ def make_citekey(lastname_first_author, year, title):
         "which",
         "who",
     ]
-    replace_char = ["-", ":", ",", "?", "!", " ", "$"]
+    replace_char = ["-", ":", ",", "?", "!", " ", "$", "("]
     for char in replace_char:
         title = title.replace(char, " ")
     for word in title.split(" "):
@@ -119,6 +119,7 @@ def make_citekey(lastname_first_author, year, title):
         else:
             title_word = word
             break
+    import ipdb; ipdb.set_trace()
     return f"{lastname_first_author}{year}{title_word}"
 
 
