@@ -51,7 +51,7 @@ def clean_folder_bib(folder, bib_data):
 
     paper_path = new_folder / f"{citekey}.pdf"
     if paper_path.exists():
-        bib[citekey].fields["file"] = f"{citekey}.pdf" 
+        bib[citekey].fields["file"] = f"{citekey}.pdf"
 
     abstract_path = new_folder / "abstract.txt"
     if abstract_path.exists():
@@ -88,6 +88,7 @@ def format_lastname_first_author(lastname_first_author):
 def make_citekey(lastname_first_author, year, title):
     lastname_first_author = format_lastname_first_author(lastname_first_author)
     year = year
+    title = title.lower()
     title_word = ""
     not_first_word = [
         "a",
@@ -109,9 +110,10 @@ def make_citekey(lastname_first_author, year, title):
         "which",
         "who",
     ]
-    for word in (
-        title.lower().replace("-", " ").replace(":", " ").replace(",", " ").split(" ")
-    ):
+    replace_char = ["-", ":", ",", "?", "!", " ", "$"]
+    for char in replace_char:
+        title = title.replace(char, " ")
+    for word in title:
         if word in not_first_word:
             continue
         else:
