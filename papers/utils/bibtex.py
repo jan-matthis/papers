@@ -119,7 +119,6 @@ def make_citekey(lastname_first_author, year, title):
         else:
             title_word = word
             break
-    import ipdb; ipdb.set_trace()
     return f"{lastname_first_author}{year}{title_word}"
 
 
