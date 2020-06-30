@@ -114,7 +114,7 @@ def make_citekey(lastname_first_author, year, title):
     for char in replace_char:
         title = title.replace(char, " ")
     for word in title.split(" "):
-        if word == not_first_word:
+        if word in not_first_word:
             continue
         else:
             title_word = word
